@@ -17,6 +17,12 @@ def upload_file(file_name, bucket, store_as=None):
     s3_client = boto3.client('s3')
     s3_client.upload_file(file_name, bucket, store_as)
 
+def download_files(bucket_name, path_to_download, save_as=None):
+    s3_client = boto3.client("s3")
+    object_to_download = path_to_download
+    s3_client.download_file(bucket_name, object_to_download, save_as)
+
+
 image_data = []
 
 with open('watermark.csv', mode='r') as csvfile:
